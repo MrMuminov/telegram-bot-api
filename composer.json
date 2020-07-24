@@ -1,0 +1,16 @@
+{
+  "name": "mr-muminov/telegram-bot-api",
+  "description": "Telegram Bot API Framework",
+  "type": "framework",
+  "license": "MIT",
+  "minimum-stability" : "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "mrmuminov\\tgbot\\": ""
+    }
+  }
+}
