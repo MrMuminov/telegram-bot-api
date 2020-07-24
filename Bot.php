@@ -17,10 +17,10 @@ class Bot extends BaseBot
      * @param string $parse_mode
      * @param bool $disable_web_page_preview
      * @param bool $disable_notification
-     * @param bool $reply_to_message_id
-     * @param bool $reply_markup
+     * @param integer $reply_to_message_id
+     * @param keyboard\Keyboard $reply_markup
      */
-    public static function sendMessage($chat_id, $text, $parse_mode = "", $disable_web_page_preview = false, $disable_notification = false, $reply_to_message_id = false, $reply_markup = false)
+    public static function sendMessage($chat_id, $text, $parse_mode = "", $disable_web_page_preview = false, $disable_notification = false, $reply_to_message_id = null, keyboard\Keyboard $reply_markup = null)
     {
         self::request([
             'chat_id' => $chat_id,
@@ -30,6 +30,22 @@ class Bot extends BaseBot
             'disable_notification' => $disable_notification,
             'reply_to_message_id' => $reply_to_message_id,
             'reply_markup' => $reply_markup,
-        ]);
+        ], "sendMessage");
+    }
+
+    /**
+     * @param string|integer $chat_id
+     * @param string $from_chat_id
+     * @param integer $message_id
+     * @param bool $disable_notification
+     */
+    public static function forwardMessage($chat_id, $from_chat_id, $message_id, $disable_notification = false)
+    {
+        self::request([
+            'chat_id' => $chat_id,
+            'from_chat_id' => $from_chat_id,
+            'message_id' => $message_id,
+            'disable_notification' => $disable_notification,
+        ], "forwardMessage");
     }
 }
